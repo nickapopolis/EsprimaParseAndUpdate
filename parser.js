@@ -1,4 +1,4 @@
-var espree = require('esprima');
+var espree = require('acorn');
 var escodegen = require('escodegen');
 var fs = require('fs');
 
@@ -8,12 +8,23 @@ module.exports = function(filePath, codeParsedCb, codeGeneratedCb){
 	    return codeParsedCb(err);
 	  }
 		try{
+			var comments = [], tokens = [];
+
 			//parse
-			var parsedCode = espree.parse(data, {attachComment: true});
-			codeParsedCb(null, parsedCode, function(updatedCode){
+			var ast = espree.parse(data, {
+				// collect ranges for each node
+			    ranges: true,
+			    // collect comments in Esprima's format
+			    onComment: comments,
+			    // collect token ranges
+			    onToken: tokens
+			});
+			escodegen.attachComments(ast, comments, tokens);
+
+			codeParsedCb(null, ast, function(updatedAst){
 			try{
 				//turn back into js
-				var newCode = escodegen.generate(updatedCode, {comment: true});
+				var newCode = escodegen.generate(updatedAst, {comment: true});
 				codeGeneratedCb(null, newCode);
 			}catch(e){
 				return codeGeneratedCb(e);

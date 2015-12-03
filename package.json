@@ -4,7 +4,7 @@
   "description": "For updating js code without dependencies and keeping comments",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/CExTNick/EsprimaParseAndUpdate",
   "dependencies": {
-    "escodegen": "^1.7.1",
-    "esprima": "^2.7.0"
+    "acorn": "^2.6.4",
+    "escodegen": "^1.7.1"
   }
 }
