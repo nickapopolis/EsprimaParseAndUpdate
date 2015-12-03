@@ -1,0 +1,26 @@
+{
+  "name": "EsprimaParseAndUpdate",
+  "version": "1.0.0",
+  "description": "For updating js code without dependencies and keeping comments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CExTNick/EsprimaParseAndUpdate"
+  },
+  "keywords": [
+    "esprima"
+  ],
+  "author": "Nick Tierney <nickapopolis@gmail.com> (http://github.com/Nickapopolis)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CExTNick/EsprimaParseAndUpdate/issues"
+  },
+  "homepage": "https://github.com/CExTNick/EsprimaParseAndUpdate",
+  "dependencies": {
+    "escodegen": "^1.7.1",
+    "esprima": "^2.7.0"
+  }
+}
